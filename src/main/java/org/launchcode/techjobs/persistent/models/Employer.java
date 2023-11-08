@@ -40,3 +40,4 @@ public class Employer extends AbstractEntity {
         this.jobs = jobs;
     }
 }
+

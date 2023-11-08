@@ -1,4 +1,3 @@
-//AbstractEntity
 package org.launchcode.techjobs.persistent.models;
 
 
@@ -52,3 +51,4 @@ public abstract class AbstractEntity {
     }
 
 }
+
