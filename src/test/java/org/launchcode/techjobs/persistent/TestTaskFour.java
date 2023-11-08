@@ -125,8 +125,8 @@ public class TestTaskFour extends AbstractTest {
     }
 
     /*
-    * Verifies that HomeController.processAddJobForm queries skillRepository and sets skills properly
-    * */
+     * Verifies that HomeController.processAddJobForm queries skillRepository and sets skills properly
+     * */
     @Test
     public void testProcessAddJobFormHandlesSkillsProperly (
             @Mocked SkillRepository skillRepository,
@@ -162,8 +162,8 @@ public class TestTaskFour extends AbstractTest {
     }
 
     /*
-    * Verifies that skillRepository and employerRepository fields have been added to ListController
-    * */
+     * Verifies that skillRepository and employerRepository fields have been added to ListController
+     * */
     @Test
     public void testListControllerHasAutowiredRepositories () throws ClassNotFoundException {
         Class listControllerClass = getClassByName("controllers.ListController");
@@ -190,8 +190,8 @@ public class TestTaskFour extends AbstractTest {
     }
 
     /*
-    * Verifies that ListController.list sets the correct model attributes using skill/employerRepository objects
-    * */
+     * Verifies that ListController.list sets the correct model attributes using skill/employerRepository objects
+     * */
     @Test
     public void testListControllerListMethodSetsFormFieldData (@Mocked Model model, @Mocked SkillRepository skillRepository, @Mocked EmployerRepository employerRepository) throws ClassNotFoundException, NoSuchFieldException, IllegalAccessException {
         Class listControllerClass = getClassByName("controllers.ListController");
@@ -227,5 +227,6 @@ public class TestTaskFour extends AbstractTest {
         boolean queryFound = queryMatcher.find();
         assertTrue(queryFound, "Task 4 SQL query is incorrect. Test your query against your database to find the error.");
     }
+
 
 }

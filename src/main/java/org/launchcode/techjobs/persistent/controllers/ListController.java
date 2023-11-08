@@ -42,7 +42,7 @@ public class ListController {
 
     @RequestMapping("")
     public String list(Model model) {
-        model.addAttribute("employers", employerRepository.findAll());
+        model.addAttribute("employers", employerRepository.findAll()); // Add employers to the model
         model.addAttribute("skills", skillRepository.findAll());
         return "list";
     }

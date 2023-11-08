@@ -1,6 +1,5 @@
 package org.launchcode.techjobs.persistent.controllers;
 
-
 import jakarta.validation.Valid;
 import org.launchcode.techjobs.persistent.models.Skill;
 import org.launchcode.techjobs.persistent.models.data.SkillRepository;
@@ -10,16 +9,17 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/skills")
+@RequestMapping("skills")
 public class SkillController {
 
     @Autowired
     private SkillRepository skillRepository;
 
-    @GetMapping("/")
+    @GetMapping // This maps to /skills
     public String index(Model model) {
         model.addAttribute("skills", skillRepository.findAll());
         return "skills/index";
@@ -32,17 +32,23 @@ public class SkillController {
     }
 
     @PostMapping("add")
-    public String processAddSkillForm(@ModelAttribute @Valid Skill newSkill, Errors errors, Model model) {
+    public String processAddSkillForm(@ModelAttribute @Valid Skill newSkill,
+                                      Errors errors, Model model) {
+
         if (errors.hasErrors()) {
             return "skills/add";
         }
+
         skillRepository.save(newSkill);
+
         return "redirect:/skills";
     }
 
     @GetMapping("view/{skillId}")
     public String displayViewSkill(Model model, @PathVariable int skillId) {
+
         Optional<Skill> optSkill = skillRepository.findById(skillId);
+
         if (optSkill.isPresent()) {
             Skill skill = optSkill.get();
             model.addAttribute("skill", skill);
@@ -51,6 +57,5 @@ public class SkillController {
             return "redirect:../";
         }
     }
-
-
 }
+
